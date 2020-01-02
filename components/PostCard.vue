@@ -15,11 +15,12 @@
                 {{ post.attributes.description }}
             </p>
             <div>
-                <span v-for="tag in tags" v-if="tags.length > 0"
-                    :class="`badge badge-pill badge-${ct}`"
-                >
-                    {{ tag }}
-                </span>
+                <div v-if="tags.length > 0">
+                  <span v-for="(tag, i) in tags" :class="`badge badge-pill badge-${ct}`" :key="i"
+                  >
+                      {{ tag }}
+                  </span>
+                </div>
             </div>
             <nuxt-link :to="`/${prefix}/${post.slug}`">
                 <div :class="`btn btn-${ct} mt-4`">
@@ -33,7 +34,7 @@
 
 <script>
 export default {
-    layout: 'zack-proser',
+    layout: 'layout-01',
     name: 'post-card',
     props: {
         post: Object,
