@@ -1,4 +1,4 @@
-
+/* eslint-disable */
 module.exports = {
   mode: 'universal',
   /*
@@ -58,6 +58,11 @@ module.exports = {
     ** You can extend webpack config here
     */
     extend (config, ctx) {
+      config.module.rules.push({
+        test: /\.md$/,
+        include: [path.resolve(__dirname, 'posts'), path.resolve(__dirname, 'blog')],
+        loader: 'frontmatter-markdown-loader'
+      })
     }
   }
 }
